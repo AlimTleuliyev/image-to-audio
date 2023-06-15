@@ -100,7 +100,7 @@ def main():
     )
 
     # Title
-    st.markdown("<div class='title'>Text-to-audio application</div>", unsafe_allow_html=True)
+    st.markdown("<div class='title'>Image Captioning and Text-to-Speech</div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1,6,1])
 
     with col1:
