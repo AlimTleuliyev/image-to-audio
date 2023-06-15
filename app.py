@@ -41,6 +41,7 @@ def play_sound():
     st.audio(audio_bytes, format='audio/wav')
 
 def main():
+    st.title("Image Captioning and Text-to-Speech")
     # Choose image source
     image_source = st.radio("Select Image Source:", ("Upload Image", "Open from URL"))
 
