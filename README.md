@@ -1,5 +1,5 @@
 # Image Captioning and Text-to-Speech Application
-
+![logo](images/logo.png)
 This project is an Image Captioning and Text-to-Speech application that generates descriptive captions for uploaded images and converts the captions into speech. It utilizes state-of-the-art models for image captioning and text-to-speech synthesis, providing a seamless user experience for visually impaired individuals, content creators, or anyone interested in exploring multimodal AI applications.
 
 ## Features

@@ -15,9 +15,9 @@ model_description = """
 This application utilizes image captioning and text-to-speech models to generate a caption for an uploaded image 
 and convert the caption into speech.
 
-The image captioning model is based on Salesforce's [BLIP architecture](https://huggingface.co/Salesforce/blip-image-captioning-base), which can generate descriptive captions for images.
+The image captioning model is based on [Salesforce's BLIP architecture](https://huggingface.co/Salesforce/blip-image-captioning-base), which can generate descriptive captions for images.
 
-The text-to-speech model, based on Microsoft's [SpeechT5](https://huggingface.co/microsoft/speecht5_tts), converts the generated caption into speech with the help of a 
+The text-to-speech model, based on [Microsoft's SpeechT5](https://huggingface.co/microsoft/speecht5_tts), converts the generated caption into speech with the help of a 
 HiFiGAN vocoder.
 """
 
