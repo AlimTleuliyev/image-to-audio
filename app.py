@@ -101,6 +101,7 @@ def main():
 
     # Title
     st.markdown("<div class='title'>Image Captioning and Text-to-Speech</div>", unsafe_allow_html=True)
+    st.image("images/logo.png", width=400, caption="logo")
 
     # Model Description
     st.markdown("<div class='description'>" + model_description + "</div>", unsafe_allow_html=True)
