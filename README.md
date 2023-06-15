@@ -21,7 +21,7 @@ Try the Image Captioning and Text-to-Speech application online by visiting the d
 
 [Live Demo](https://alimtleuliyev-image-to-audio-app-xs26qi.streamlit.app)
 
-Note: In case the application runs out of memory during usage, you can try rebooting the app to free up resources and ensure optimal performance.
+Note: In case the application runs out of memory during usage, you should reboot the app to free up resources and ensure optimal performance.
 
 ## Installation
 
