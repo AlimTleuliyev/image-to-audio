@@ -69,9 +69,21 @@ def visualize_speech():
     st.pyplot(fig)
 
 def main():
+    st.set_page_config(
+    page_title="Image-to-Speech",
+    page_icon="📸",
+    initial_sidebar_state="collapsed",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
+)
+
     st.sidebar.markdown("---")
     st.sidebar.markdown("Developed by Alim Tleuliyev")
     st.sidebar.markdown("Contact: [alim.tleuliyev@nu.edu.kz](mailto:alim.tleuliyev@nu.edu.kz)")
+    st.sidebar.markdown("GitHub: [Repo](https://github.com/AlimTleuliyev/image-to-audio)")
 
     st.markdown(
         """
@@ -101,7 +113,7 @@ def main():
 
     # Title
     st.markdown("<div class='title'>Image Captioning and Text-to-Speech</div>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1,6,1])
+    col1, col2, col3 = st.columns([1,2,1])
 
     with col1:
         st.write("")
@@ -116,7 +128,7 @@ def main():
     st.markdown("<div class='description'>" + model_description + "</div>", unsafe_allow_html=True)
 
     # Instructions
-    with st.expander("Instructions", expanded=True):
+    with st.expander("Instructions"):
         st.markdown("1. Upload an image or provide the URL of an image.")
         st.markdown("2. Click the 'Generate Caption and Speech' button.")
         st.markdown("3. The generated caption will be displayed, and the speech will start playing.")

@@ -10,11 +10,11 @@ This project is an Image Captioning and Text-to-Speech application that generate
 
 - **Text-to-Speech Synthesis**: [Microsoft's SpeechT5](https://huggingface.co/microsoft/speecht5_tts) model is employed for text-to-speech synthesis, converting the generated captions into natural-sounding speech. The SpeechT5 model incorporates advanced techniques for speech generation, producing high-quality and expressive speech output.
 
-- **Multiple Input Options**: The application supports multiple input options for convenience. Users can either upload an image from their local device or provide the URL of an image hosted online. This flexibility allows users to easily access and process images from various sources.
+- **Multiple Input Options**:  Supports image upload from local devices and URL input for images hosted online, offering flexibility in image selection.
 
-- **Real-time Processing**: The image captioning and text-to-speech synthesis are performed in real-time, ensuring quick and responsive results. Users can instantly see the generated caption and hear the corresponding speech output, enabling a seamless and interactive experience.
+- **Real-time Processing**: Performs image captioning and text-to-speech synthesis in real-time, delivering quick and responsive results.
 
-- **User-friendly Interface**: The application features a user-friendly interface built using the Streamlit framework. It provides clear instructions, intuitive image upload options, and visually appealing visualizations. Users can easily interact with the application, making it accessible to individuals with varying technical backgrounds.
+- **User-friendly Interface**: Built using the Streamlit framework, the application provides clear instructions, intuitive image upload options, and visually appealing visualizations for a seamless and accessible user experience.
 
 ## Installation
 
