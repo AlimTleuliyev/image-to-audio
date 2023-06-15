@@ -69,6 +69,10 @@ def visualize_speech():
     st.pyplot(fig)
 
 def main():
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("Developed by Alim Tleuliyev")
+    st.sidebar.markdown("Contact: [alim.tleuliyev@nu.edu.kz](mailto:alim.tleuliyev@nu.edu.kz)")
+
     st.markdown(
         """
         <style>
