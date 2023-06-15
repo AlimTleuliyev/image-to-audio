@@ -71,9 +71,5 @@ def main():
         st.subheader("Caption:")
         st.write(output_caption)
 
-        # Download the speech
-        st.subheader("Download Speech:")
-        st.markdown("[Download speech.wav](./speech.wav)")
-
 if __name__ == "__main__":
     main()
