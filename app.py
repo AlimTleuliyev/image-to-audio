@@ -78,17 +78,22 @@ def main():
         speech_processor, speech_model, speech_vocoder, speaker_embeddings = initialize_speech_synthesis()
 
         # Generate caption
-        output_caption = generate_caption(caption_processor, caption_model, image)
-
-        # Generate speech from the caption
-        generate_speech(speech_processor, speech_model, speech_vocoder, speaker_embeddings, output_caption)
-
-        # Play the generated sound
-        play_sound()
+        with st.spinner("Generating Caption..."):
+            output_caption = generate_caption(caption_processor, caption_model, image)
 
         # Display the caption
         st.subheader("Caption:")
         st.write(output_caption)
+        
+        # Generate speech from the caption
+        with st.spinner("Generating Speech..."):
+            generate_speech(speech_processor, speech_model, speech_vocoder, speaker_embeddings, output_caption)
+
+        
+        st.subheader("Audio:")
+        # Play the generated sound
+        play_sound()
+
 
 if __name__ == "__main__":
     main()
