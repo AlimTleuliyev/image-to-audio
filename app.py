@@ -41,15 +41,33 @@ def play_sound():
     st.audio(audio_bytes, format='audio/wav')
 
 def main():
-    st.title("Image Captioning and Text-to-Speech")
-    
-    # File uploader for image
-    uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+    # Choose image source
+    image_source = st.radio("Select Image Source:", ("Upload Image", "Open from URL"))
+
+    if image_source == "Upload Image":
+        # File uploader for image
+        uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+        if uploaded_file is not None:
+            image = Image.open(uploaded_file)
+        else:
+            image = None
+
+    else:
+        # Input box for image URL
+        url = st.text_input("Enter the image URL:")
+        if url:
+            response = requests.get(url, stream=True)
+            if response.status_code == 200:
+                image = Image.open(response.raw)
+            else:
+                st.error("Error loading image from URL.")
+                image = None
+        else:
+            image = None
 
     # Generate caption and play sound button
-    if uploaded_file is not None:
+    if image is not None:
         # Display the uploaded image
-        image = Image.open(uploaded_file)
         st.image(image, caption='Uploaded Image', use_column_width=True)
 
         # Initialize image captioning models
