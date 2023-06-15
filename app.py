@@ -15,9 +15,9 @@ model_description = """
 This application utilizes image captioning and text-to-speech models to generate a caption for an uploaded image 
 and convert the caption into speech.
 
-The image captioning model is based on Salesforce's BLIP architecture, which can generate descriptive captions for images.
+The image captioning model is based on Salesforce's [BLIP architecture](https://huggingface.co/Salesforce/blip-image-captioning-base), which can generate descriptive captions for images.
 
-The text-to-speech model, based on Microsoft's SpeechT5, converts the generated caption into speech with the help of a 
+The text-to-speech model, based on Microsoft's [SpeechT5](https://huggingface.co/microsoft/speecht5_tts), converts the generated caption into speech with the help of a 
 HiFiGAN vocoder.
 """
 
@@ -111,6 +111,8 @@ def main():
     # Choose image source
     image_source = st.radio("Select Image Source:", ("Upload Image", "Open from URL"))
 
+    image = None
+
     if image_source == "Upload Image":
         # File uploader for image
         uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
@@ -123,14 +125,16 @@ def main():
         # Input box for image URL
         url = st.text_input("Enter the image URL:")
         if url:
-            response = requests.get(url, stream=True)
-            if response.status_code == 200:
-                image = Image.open(response.raw)
-            else:
-                st.error("Error loading image from URL.")
+            try:
+                response = requests.get(url, stream=True)
+                if response.status_code == 200:
+                    image = Image.open(response.raw)
+                else:
+                    st.error("Error loading image from URL.")
+                    image = None
+            except requests.exceptions.RequestException as e:
+                st.error(f"Error loading image from URL: {e}")
                 image = None
-        else:
-            image = None
 
     # Generate caption and play sound button
     if image is not None:
