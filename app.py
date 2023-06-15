@@ -6,8 +6,21 @@ import os
 import torch
 import soundfile as sf
 from datasets import load_dataset
-
+import matplotlib.pyplot as plt
+import numpy as np
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
+# Model Description
+model_description = """
+This application utilizes image captioning and text-to-speech models to generate a caption for an uploaded image 
+and convert the caption into speech.
+
+The image captioning model is based on Salesforce's BLIP architecture, which can generate descriptive captions for images.
+
+The text-to-speech model, based on Microsoft's SpeechT5, converts the generated caption into speech with the help of a 
+HiFiGAN vocoder.
+"""
+
 
 @st.cache_resource
 def initialize_image_captioning():
@@ -40,8 +53,61 @@ def play_sound():
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/wav')
 
+def visualize_speech():
+    data, samplerate = sf.read("speech.wav")
+    duration = len(data) / samplerate
+
+    # Create time axis
+    time = np.linspace(0., duration, len(data))
+
+     # Plot the speech waveform
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.plot(time, data)
+    ax.set(xlabel="Time (s)", ylabel="Amplitude", title="Speech Waveform")
+
+    # Display the plot using st.pyplot()
+    st.pyplot(fig)
+
 def main():
-    st.title("Image Captioning and Text-to-Speech")
+    st.markdown(
+        """
+        <style>
+        .container {
+            max-width: 800px;
+        }
+        .title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .description {
+            margin-bottom: 30px;
+        }
+        .instructions {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Title
+    st.markdown("<div class='title'>Image Captioning and Text-to-Speech</div>", unsafe_allow_html=True)
+
+    # Model Description
+    st.markdown("<div class='description'>" + model_description + "</div>", unsafe_allow_html=True)
+
+    # Instructions
+    st.markdown("<div class='title'>Instructions</div>", unsafe_allow_html=True)
+    st.markdown("1. Upload an image or provide the URL of an image.")
+    st.markdown("2. Click the 'Generate Caption and Speech' button.")
+    st.markdown("3. The generated caption will be displayed, and the speech will start playing.")
+
+
     # Choose image source
     image_source = st.radio("Select Image Source:", ("Upload Image", "Open from URL"))
 
@@ -93,6 +159,10 @@ def main():
         st.subheader("Audio:")
         # Play the generated sound
         play_sound()
+
+        # Visualize the speech waveform
+        with st.expander("See visualization"):
+            visualize_speech()
 
 
 if __name__ == "__main__":
