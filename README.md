@@ -19,7 +19,7 @@ This project is an Image Captioning and Text-to-Speech application that generate
 ## Try it online
 Try the Image Captioning and Text-to-Speech application online by visiting the deployed Streamlit app:
 
-[Live Demo](https://alimtleuliyev-image-to-audio-app-xs26qi.streamlit.app)
+[Live Demo](https://image-to-audio.streamlit.app)
 
 Note: In case the application runs out of memory during usage, you should reboot the app to free up resources and ensure optimal performance.
 
