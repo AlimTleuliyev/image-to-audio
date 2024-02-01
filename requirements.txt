@@ -92,7 +92,7 @@ six==1.16.0
 smmap==5.0.0
 soundfile==0.12.1
 stack-data==0.6.2
-streamlit==1.22.0
+streamlit==1.30.0
 sympy==1.12
 tenacity==8.2.2
 tokenizers==0.13.3
